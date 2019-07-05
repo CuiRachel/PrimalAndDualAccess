@@ -8,19 +8,19 @@ import psycopg2 as pg
 ###################Inputs for the primal access calculation###############
 #### ***** needs to be defined before running the script
 
-conn = pg.connect("dbname=full_cost_access user=postgres password=cmy19890820")
+conn = pg.connect("dbname=***** user=***** password=*****")
 cur=conn.cursor()
 
-schema="cost_matrix"   ### schema name
+schema="*****"   ### schema name
 
-ttName="cost_matrix_shortest_path"  ### table name: travel time matrix
-origColumn="origin" ### column name: origins
-destColumn="destination" ### column name: origins
-ttColumn="time_cost" ### column name: travel time
+ttName="*****"  ### table name: travel time matrix
+origColumn="*****" ### column name: origins
+destColumn="*****" ### column name: origins
+ttColumn="*****" ### column name: travel time
 
-oppName="taz_emp" ### table name: opportunity
-blockColumn="taz" ### column name: block ID
-oppColumn="total_emp" ### column name: opportunity
+oppName="*****" ### table name: opportunity
+blockColumn="*****" ### column name: block ID
+oppColumn="*****" ### column name: opportunity
 
 
 
@@ -29,7 +29,7 @@ thresholds=[1000,2000,5000,10000,20000,50000,100000,200000,500000,1000000]
 ################### Functions ####################
 
 def dualAccess(origin, input_table, output_table,thresholds):
-    cur.execute("select {}, {}, {} from {} where origin={} order by {} asc".format(origColumn, ttColumn, oppColumn, input_table, origin,ttColumn))    
+    cur.execute("select {}, {}, {} from {} where {}={} order by {} asc".format(origColumn, ttColumn, oppColumn, input_table, origColumn, origin,ttColumn))  ### where {}={} -> where {}='{}' if column type of origin is text or character varying  
     ttOrigin=cur.fetchall()
     count_dest=len(ttOrigin)
     sumEmp=0
@@ -42,7 +42,7 @@ def dualAccess(origin, input_table, output_table,thresholds):
             accessValue=9999
         else:
             accessValue=ttOrigin[num-1][1]
-        cur.execute("update {} set access_{}min={} where origin={}".format(output_table, thres, accessValue, origin))
+        cur.execute("update {} set access_{}min={} where {}={}".format(output_table, thres, accessValue, origColumn, origin)) ### where {}={} -> where {}='{}' if column type of origin is text or character varying  
         conn.commit()   
 
 
