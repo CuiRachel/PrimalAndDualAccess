@@ -69,8 +69,10 @@ for thres in thresholds:
 print("Join the tt table with the opp table")
 cur.execute("select exists (select 1 from information_schema.tables where table_schema='{}' and table_name='{}')".format(schema, outputName))
 if cur.fetchone()[0]==False:
-    #cur.execute("select x.{}, x.{}, x.{}, y.{} into {} from {} x left join {} y on x.{}=y.{}".format(origColumn, destColumn, ttColumn, oppColumn, ttOppTable, ttTable, oppTable, destColumn, blockColumn))
+    cur.execute("select x.{}, x.{}, x.{}, y.{} into {} from {} x left join {} y on x.{}=y.{}".format(origColumn, destColumn, ttColumn, oppColumn, ttOppTable, ttTable, oppTable, destColumn, blockColumn))
     conn.commit()
+
+print("Calculating dual accessibility")
 
 cur.execute("select {} from {} group by {}".format(origColumn, ttOppTable, origColumn))
 origins=cur.fetchall()
