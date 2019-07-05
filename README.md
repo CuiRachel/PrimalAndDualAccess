@@ -26,3 +26,12 @@ This is a python script that calls PostgreSQL for dual accessibility calculation
 4. The default time threshold setting is [1000,2000,5000,10000,20000,50000,100000,200000,500000,1000000] opportunities, which can be edited;
 
 5. The output will be named as "dual_access" stored in the same schema as the travel time matrix and opportunities tables in PgAdmin.
+
+## ArcGIS Model
+
+We built a model based on ArcGIS Model Builder to run the network analyst tool in loop to calculate travel time matrices.
+
+If the number of origins and destinations are quite small, the OD cost matrix can be directly built following the steps described in http://desktop.arcgis.com/en/arcmap/latest/extensions/network-analyst/od-cost-matrix.htm, e.g., 2500\*2500, which we tested before.
+
+
+
