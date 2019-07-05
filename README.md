@@ -35,5 +35,5 @@ If the numbers of origins and destinations are quite small, the OD cost matrix c
 
 If the numbers of origins and destinations are large, ArcGIS cannot solve the matrix due to the memory limitation, which requires to separate the origins/destinations and run the tool in loop to fill the matrix. 
 
-Note that, one more step need to be done for transit travel time calculations before running the network analyst tool, that is adding GTFS data to a network dataset. The details are shown in https://esri.github.io/public-transit-tools/AddGTFStoaNetworkDataset.html.
+Note that, one more step need to be done for transit travel time calculations before running the network analyst tool, that is adding GTFS data to a network dataset. The details can be found in https://esri.github.io/public-transit-tools/AddGTFStoaNetworkDataset.html.
 
