@@ -31,9 +31,9 @@ This is a python script that calls PostgreSQL for dual accessibility calculation
 
 We built a model based on ArcGIS Model Builder to run the network analyst tool in loop to calculate travel time matrices.
 
-If the numbers of origins and destinations are quite small, the OD cost matrix can be directly built following the steps described in http://desktop.arcgis.com/en/arcmap/latest/extensions/network-analyst/od-cost-matrix.htm;
+If the numbers of origins and destinations are quite small, the OD cost matrix can be directly built following the steps described on http://desktop.arcgis.com/en/arcmap/latest/extensions/network-analyst/od-cost-matrix.htm;
 
 If the numbers of origins and destinations are large, ArcGIS cannot solve the matrix due to the memory limitation, which requires to separate the origins/destinations and run the tool in loop to fill the matrix. 
 
-Note that, one more step need to be done for transit travel time calculations before running the network analyst tool, that is adding GTFS data to a network dataset. The details can be found in https://esri.github.io/public-transit-tools/AddGTFStoaNetworkDataset.html.
+Note that, one more step need to be done for transit travel time calculations before running the network analyst tool, that is adding GTFS data to a network dataset. The details can be found on https://esri.github.io/public-transit-tools/AddGTFStoaNetworkDataset.html.
 
