@@ -30,7 +30,7 @@ def accessCal(ttName, ttTable, outputTableName,outputTable, thresholds):
     print("---Calculating accessibility matrix")
     cur.execute("select exists (select 1 from information_schema.tables where table_schema='{}' and table_name='{}')".format(schema, outputTableName))
     if cur.fetchone()[0]==False:
-        cur.execute("select {} into {} from {} group by origin order by origin asc".format(origColumn, outputTableName, ttTable))
+        cur.execute("select {} into {} from {} group by origin order by origin asc".format(origColumn, outputTable, ttTable))
         conn.commit()
     for i, threshold in enumerate(thresholds):
         print("threshold={}".format(threshold))
@@ -58,10 +58,6 @@ cur.execute("select exists (select 1 from information_schema.tables where table_
 if cur.fetchone()[0]==False:
     cur.execute("select x.{}, x.{}, x.{}, y.{} into {} from {} x left join {} y on x.{}=y.{}".format(origColumn, destColumn, ttColumn, oppColumn, ttOppTable, ttTable, oppTable, destColumn, blockColumn))
     conn.commit()
-
-
-cur.execute("update {} set {}=i.{} from (select {}, {} from {}) i where i.{}={}.{}".format(ttTable, oppColumn, oppColumn, blockColumn, oppColumn, oppTable, blockColumn, ttTable, destColumn))
-conn.commit()
 
 accessCal(ttName, ttTable, outputName, outputTable, thresholds)
 
