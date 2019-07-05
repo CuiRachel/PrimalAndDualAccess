@@ -21,6 +21,8 @@ This is a python script that calls PostgreSQL for dual accessibility calculation
 
 2. The table names and column names need to be defined in the script;
 
-3. The default time threshold setting is [1000,2000,5000,10000,20000,50000,100000,200000,500000,1000000] opportunities, which can be edited;
+3. If the column type of origin is "text" or "character varying", minor changes are needed to run the script (commented in the script);
 
-4. The output will be named as "dual_access" stored in the same schema as the travel time matrix and opportunities tables in PgAdmin.
+4. The default time threshold setting is [1000,2000,5000,10000,20000,50000,100000,200000,500000,1000000] opportunities, which can be edited;
+
+5. The output will be named as "dual_access" stored in the same schema as the travel time matrix and opportunities tables in PgAdmin.
