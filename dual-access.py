@@ -1,4 +1,4 @@
-import csv
+aimport csv
 import os
 import math
 import time
@@ -15,7 +15,7 @@ schema="*****"   ### schema name
 
 ttName="*****"  ### table name: travel time matrix
 origColumn="*****" ### column name: origins
-destColumn="*****" ### column name: origins
+destColumn="*****" ### column name: destinations
 ttColumn="*****" ### column name: travel time
 
 oppName="*****" ### table name: opportunity
